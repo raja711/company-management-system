@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const API_BASE_URL = 'https://company-management-system-a8zn.onrender.com/api';
+
 function App() {
   const [departments, setDepartments] = useState([]);
   const [employees, setEmployees] = useState([]);
@@ -22,7 +24,7 @@ function App() {
 
   const fetchDepartments = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/departments/');
+      const res = await axios.get(`${API_BASE_URL}/departments/`);
       const deptData = Array.isArray(res.data) ? res.data : (res.data.results || []);
       setDepartments(deptData);
     } catch (err) {
@@ -32,7 +34,7 @@ function App() {
 
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/employees/');
+      const res = await axios.get(`${API_BASE_URL}/employees/`);
       const empData = Array.isArray(res.data) ? res.data : (res.data.results || []);
       setEmployees(empData);
     } catch (err) {
@@ -44,10 +46,10 @@ function App() {
     e.preventDefault();
     try {
       if (editingDeptId) {
-        await axios.put(`http://127.0.0.1:8000/api/departments/${editingDeptId}/`, { name: deptName, location: deptLocation });
+        await axios.put(`${API_BASE_URL}/departments/${editingDeptId}/`, { name: deptName, location: deptLocation });
         setEditingDeptId(null);
       } else {
-        await axios.post('http://127.0.0.1:8000/api/departments/', { name: deptName, location: deptLocation });
+        await axios.post(`${API_BASE_URL}/departments/`, { name: deptName, location: deptLocation });
       }
       setDeptName('');
       setDeptLocation('');
@@ -72,7 +74,7 @@ function App() {
         salary: empSalary,
         department: empDepartment
       };
-      await axios.post('http://127.0.0.1:8000/api/employees/', empData);
+      await axios.post(`${API_BASE_URL}/employees/`, empData);
       setEmpName('');
       setEmpEmail('');
       setEmpDesignation('');
@@ -87,7 +89,7 @@ function App() {
 
   const handleDeleteDept = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/departments/${id}/`);
+      await axios.delete(`${API_BASE_URL}/departments/${id}/`);
       fetchDepartments();
     } catch (err) {
       console.error("Error deleting department", err);
@@ -96,7 +98,7 @@ function App() {
 
   const handleDeleteEmp = async (id) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/employees/${id}/`);
+      await axios.delete(`${API_BASE_URL}/employees/${id}/`);
       fetchEmployees();
     } catch (err) {
       console.error("Error deleting employee", err);
