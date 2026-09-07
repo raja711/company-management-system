@@ -56,7 +56,7 @@ function App() {
       fetchDepartments();
     } catch (err) {
       console.error("Error saving department", err);
-      alert("Department save nahi ho paya! Django server check karein.");
+      alert("Department save nahi ho paya!");
     }
   };
 
@@ -140,15 +140,15 @@ function App() {
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '35px' }}>
-          <h2 style={{ fontSize: '28px', fontWeight: '800', background: 'linear-gradient(to right, #818cf8, #c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: '0 0 10px 0' }}>Company Management System</h2>
-          <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>Manage your departments and workforce seamlessly</p>
+          <h2 style={{ fontSize: '24px', fontWeight: '800', background: 'linear-gradient(to right, #818cf8, #c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: '0 0 8px 0', lineHeight: '1.3' }}>Company Management System</h2>
+          <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0, lineHeight: '1.4' }}>Manage your departments and workforce seamlessly</p>
         </div>
 
         {/* Department Section */}
-        <div style={{ marginBottom: '40px' }}>
-          <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#e2e8f0', borderBottom: '2px solid rgba(255, 255, 255, 0.1)', paddingBottom: '8px', marginBottom: '20px' }}>Manage Departments</h3>
+        <div style={{ marginBottom: '35px' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#e2e8f0', borderBottom: '2px solid rgba(255, 255, 255, 0.1)', paddingBottom: '8px', marginBottom: '16px' }}>Manage Departments</h3>
 
-          <form onSubmit={handleDeptSubmit} className="dept-form" style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
+          <form onSubmit={handleDeptSubmit} className="dept-form" style={{ display: 'flex', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
             <input type="text" placeholder="Department Name" value={deptName} onChange={(e) => setDeptName(e.target.value)} required style={inputStyle} />
             <input type="text" placeholder="Location" value={deptLocation} onChange={(e) => setDeptLocation(e.target.value)} required style={inputStyle} />
             <button type="submit" style={{ ...primaryBtnStyle, width: '100%' }}>{editingDeptId ? 'Update' : 'Add Dept'}</button>
@@ -159,8 +159,8 @@ function App() {
               <li key={dept.id} className="custom-list-item" style={listItemStyle}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', overflow: 'hidden' }}>
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#6366f1', flexShrink: 0 }}></span>
-                  <span style={{ fontWeight: '500', wordBreak: 'break-word' }}>{dept.name}</span>
-                  <span style={{ color: '#94a3b8', fontSize: '13px' }}>({dept.location})</span>
+                  <span style={{ fontWeight: '500', wordBreak: 'break-word', lineHeight: '1.4' }}>{dept.name}</span>
+                  <span style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '1.4' }}>({dept.location})</span>
                 </div>
                 <div className="action-buttons" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
                   <button onClick={() => { setEditingDeptId(dept.id); setDeptName(dept.name); setDeptLocation(dept.location); }} style={editBtnStyle}>Edit</button>
@@ -173,9 +173,9 @@ function App() {
 
         {/* Employee Section */}
         <div>
-          <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#e2e8f0', borderBottom: '2px solid rgba(255, 255, 255, 0.1)', paddingBottom: '8px', marginBottom: '20px' }}>Manage Employees</h3>
+          <h3 style={{ fontSize: '16px', fontWeight: '600', color: '#e2e8f0', borderBottom: '2px solid rgba(255, 255, 255, 0.1)', paddingBottom: '8px', marginBottom: '16px' }}>Manage Employees</h3>
 
-          <form onSubmit={handleEmpSubmit} className="emp-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '25px' }}>
+          <form onSubmit={handleEmpSubmit} className="emp-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '20px' }}>
             <input type="text" placeholder="Employee Name" value={empName} onChange={(e) => setEmpName(e.target.value)} required style={inputStyle} />
             <input type="email" placeholder="Email Address" value={empEmail} onChange={(e) => setEmpEmail(e.target.value)} required style={inputStyle} />
             <input type="text" placeholder="Designation" value={empDesignation} onChange={(e) => setEmpDesignation(e.target.value)} required style={inputStyle} />
@@ -199,10 +199,14 @@ function App() {
           <ul style={{ padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {employees.map(emp => (
               <li key={emp.id} className="custom-list-item" style={listItemStyle}>
-                <div style={{ wordBreak: 'break-word', paddingRight: '10px', overflow: 'hidden' }}>
-                  <strong style={{ color: '#f8fafc', fontSize: '15px' }}>{emp.name}</strong>
-                  <span style={{ color: '#818cf8', fontSize: '13px', marginLeft: '8px' }}>({emp.designation})</span>
-                  <div style={{ color: '#94a3b8', fontSize: '13px', marginTop: '2px' }}>{emp.email} • <span style={{ color: '#34d399', fontWeight: '600' }}>₹{emp.salary}</span></div>
+                <div style={{ wordBreak: 'break-word', paddingRight: '10px', overflow: 'hidden', width: '100%' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '6px', marginBottom: '4px' }}>
+                    <strong style={{ color: '#f8fafc', fontSize: '15px', lineHeight: '1.4' }}>{emp.name}</strong>
+                    <span style={{ color: '#818cf8', fontSize: '13px', lineHeight: '1.4' }}>({emp.designation})</span>
+                  </div>
+                  <div style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '1.5', wordBreak: 'break-all' }}>
+                    {emp.email} • <span style={{ color: '#34d399', fontWeight: '600' }}>₹{emp.salary}</span>
+                  </div>
                 </div>
                 <div className="action-buttons" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
                   <button onClick={() => handleDeleteEmp(emp.id)} style={deleteBtnStyle}>Delete</button>
