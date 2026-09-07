@@ -14,3 +14,10 @@ A comprehensive Full-Stack Company Management application built with **Django RE
 * RESTful APIs for managing company data, employees, and operations.
 * Modern, responsive single-page application (SPA) user interface built with Vite + React.
 * Unified deployment setup where Django serves both the REST API and the optimized React frontend.
+
+## ⚙️ Local Development Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/raja711/company-management-system.git](https://github.com/raja711/company-management-system.git)
+   cd company-management-system
