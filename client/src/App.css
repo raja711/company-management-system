@@ -195,3 +195,36 @@
     border-right-color: var(--border);
   }
 }
+/* मोबाइल स्क्रीन के लिए अल्टीमेट फिक्स */
+@media screen and (max-width: 768px) {
+  /* 1. पूरी बॉडी और रूट को सिकुड़ने से रोकें */
+  body, html, #root {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 2. सभी फॉर्म और इनपुट फील्ड्स को मोबाइल फ्रेंडली बनाएं */
+  form, .form-container, div {
+    box-sizing: border-box !important;
+  }
+
+  input, select, textarea, button {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 3. टेबल्स या लंबी लिस्ट को होरिजोंटल स्क्रॉल दें ताकि कटे नहीं */
+  table, .table-container, ul {
+    width: 100% !important;
+    display: block !important;
+    overflow-x: auto !important;
+    box-sizing: border-box !important;
+  }
+}
+
