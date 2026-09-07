@@ -3,7 +3,7 @@
 A comprehensive Full-Stack Company Management application built with **Django REST Framework (DRF)** for the backend and **React.js (Vite)** for the frontend, deployed seamlessly as a single unit on **Render**.
 
 ## 🚀 Live Demo
-[Check Live Application](https://company-management-system-a8zn.onrender.com)
+* **Check Live Application:** [https://company-management-system-a8zn.onrender.com](https://company-management-system-a8zn.onrender.com)
 
 ## 🛠️ Tech Stack
 * **Backend:** Python, Django, Django REST Framework, WhiteNoise, SQLite
