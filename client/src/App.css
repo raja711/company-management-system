@@ -19,6 +19,8 @@
 
 .hero {
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 
   .base,
   .framework,
@@ -63,9 +65,11 @@
   place-content: center;
   place-items: center;
   flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
+    padding: 32px 12px 24px;
     gap: 18px;
   }
 }
@@ -74,12 +78,15 @@
   display: flex;
   border-top: 1px solid var(--border);
   text-align: left;
+  width: 100%;
+  box-sizing: border-box;
 
   & > div {
     flex: 1 1 0;
     padding: 32px;
+    box-sizing: border-box;
     @media (max-width: 1024px) {
-      padding: 24px 20px;
+      padding: 24px 12px;
     }
   }
 
@@ -110,6 +117,7 @@
   display: flex;
   gap: 8px;
   margin: 32px 0 0;
+  box-sizing: border-box;
 
   .logo {
     height: 18px;
@@ -126,6 +134,7 @@
     gap: 8px;
     text-decoration: none;
     transition: box-shadow 0.3s;
+    box-sizing: border-box;
 
     &:hover {
       box-shadow: var(--shadow);
@@ -143,6 +152,7 @@
 
     li {
       flex: 1 1 calc(50% - 8px);
+      box-sizing: border-box;
     }
 
     a {
@@ -156,6 +166,8 @@
 #spacer {
   height: 88px;
   border-top: 1px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
   @media (max-width: 1024px) {
     height: 48px;
   }
@@ -164,6 +176,7 @@
 .ticks {
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 
   &::before,
   &::after {
