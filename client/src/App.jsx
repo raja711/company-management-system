@@ -122,6 +122,17 @@ function App() {
           .main-container {
             padding: 15px !important;
           }
+          .custom-list-item {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+          .custom-list-item .action-buttons {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: flex-end !important;
+            gap: 8px !important;
+          }
         }
       `}</style>
       
@@ -140,18 +151,18 @@ function App() {
           <form onSubmit={handleDeptSubmit} className="dept-form" style={{ display: 'flex', gap: '12px', marginBottom: '20px', flexWrap: 'wrap' }}>
             <input type="text" placeholder="Department Name" value={deptName} onChange={(e) => setDeptName(e.target.value)} required style={inputStyle} />
             <input type="text" placeholder="Location" value={deptLocation} onChange={(e) => setDeptLocation(e.target.value)} required style={inputStyle} />
-            <button type="submit" style={{ ...primaryBtnStyle, width: '100%', '@media(min-width: 768px)': { width: 'auto' } }}>{editingDeptId ? 'Update' : 'Add Dept'}</button>
+            <button type="submit" style={{ ...primaryBtnStyle, width: '100%' }}>{editingDeptId ? 'Update' : 'Add Dept'}</button>
           </form>
 
           <ul style={{ padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {departments.map(dept => (
-              <li key={dept.id} style={listItemStyle}>
+              <li key={dept.id} className="custom-list-item" style={listItemStyle}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', overflow: 'hidden' }}>
                   <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#6366f1', flexShrink: 0 }}></span>
                   <span style={{ fontWeight: '500', wordBreak: 'break-word' }}>{dept.name}</span>
                   <span style={{ color: '#94a3b8', fontSize: '13px' }}>({dept.location})</span>
                 </div>
-                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                <div className="action-buttons" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
                   <button onClick={() => { setEditingDeptId(dept.id); setDeptName(dept.name); setDeptLocation(dept.location); }} style={editBtnStyle}>Edit</button>
                   <button onClick={() => handleDeleteDept(dept.id)} style={deleteBtnStyle}>Delete</button>
                 </div>
@@ -187,13 +198,15 @@ function App() {
 
           <ul style={{ padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {employees.map(emp => (
-              <li key={emp.id} style={listItemStyle}>
+              <li key={emp.id} className="custom-list-item" style={listItemStyle}>
                 <div style={{ wordBreak: 'break-word', paddingRight: '10px', overflow: 'hidden' }}>
                   <strong style={{ color: '#f8fafc', fontSize: '15px' }}>{emp.name}</strong>
                   <span style={{ color: '#818cf8', fontSize: '13px', marginLeft: '8px' }}>({emp.designation})</span>
                   <div style={{ color: '#94a3b8', fontSize: '13px', marginTop: '2px' }}>{emp.email} • <span style={{ color: '#34d399', fontWeight: '600' }}>₹{emp.salary}</span></div>
                 </div>
-                <button onClick={() => handleDeleteEmp(emp.id)} style={{ ...deleteBtnStyle, flexShrink: 0 }}>Delete</button>
+                <div className="action-buttons" style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                  <button onClick={() => handleDeleteEmp(emp.id)} style={deleteBtnStyle}>Delete</button>
+                </div>
               </li>
             ))}
           </ul>
